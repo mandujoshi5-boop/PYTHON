@@ -50,5 +50,31 @@ person.update({})                 #used to update the multiple values
 person.clear()                    #it empty the whole dictionary 
 del person["city"]                #it deleted the key with no return value 
 '''
-#Dictionary Methods
+#dictionary nested list methods
+phone_book={
+    "jaykishor_singh":1234567890,
+    "mandar_joshi":9321654529,
+    "hrishant_joshi":9987820570
+}
+#print(phone_book["hrishant_joshi"])
+#print(phone_book.get("gaurav_soni"))
+phone_book["gaurav_soni"]=8928263839
+#print(phone_book)
+phone_book["mandar_joshi"]=9321654525
+#print(phone_book)
+remove=phone_book.pop("jaykishor_singh")
+#print(remove)
+del phone_book["gaurav_soni"]
+#print(phone_book)
+
+library = {
+    "book1": {"title": "Python Crash Course", "author": "Eric Matthes", "pages": 544},
+    "book2": {"title": "Automate the Boring Stuff", "author": "Al Sweigart", "pages": 592},
+    "book3": {"title": "Deep Learning", "author": "Ian Goodfellow", "pages": 800}
+}
+print(library.keys())
+print(library["book3"]["title"])
+for title,pages in library.items():
+    print(title, "contains",pages)
+
 
