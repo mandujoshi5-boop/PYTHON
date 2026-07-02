@@ -51,6 +51,7 @@ person.clear()                    #it empty the whole dictionary
 del person["city"]                #it deleted the key with no return value 
 '''
 #dictionary nested list methods
+'''
 phone_book={
     "jaykishor_singh":1234567890,
     "mandar_joshi":9321654529,
@@ -72,9 +73,92 @@ library = {
     "book2": {"title": "Automate the Boring Stuff", "author": "Al Sweigart", "pages": 592},
     "book3": {"title": "Deep Learning", "author": "Ian Goodfellow", "pages": 800}
 }
-print(library.keys())
-print(library["book3"]["title"])
-for title,pages in library.items():
-    print(title, "contains",pages)
+#print(library.keys())
+#print(library["book3"]["title"])
+#for title,pages in library.items():
+#print(title, "contains",pages)
+
+
+# Basic comprehension
+squares= {x: x**2 for x in range(1, 6)}
+# {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+# With condition
+even_squares = {x: x**2 for x in range(1, 11) if x % 2 == 0}
+# {2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+
+# Transform existing dict
+prices = {"apple": 1.5, "banana": 0.5, "cherry": 3.0}
+discounted = {item: price * 0.9 for item, price in prices.items()}
+# {'apple': 1.35, 'banana': 0.45, 'cherry': 2.7}
+
+defaults = {"lr": 0.01, "epochs": 10, "dropout": 0.3}
+custom   = {"lr": 0.001, "batch_size": 64}
+merged = defaults | custom
+print(merged)
+'''
+#In the merging method the second or any other dictonary you merged at last win in the duplicate keys
+
+#defaultdict:-
+#defaultdict is just a normal dictionary that automatically sets a default value for any new key, so you never crash on missing keys.
+#example
+'''
+from collections import defaultdict
+name_count=defaultdict(int)
+names={}
+names.update({"mandar":["python","java"],"jaykishor":["c++","java"]})
+for name in names:
+    name_count[name]+=1
+    
+print(dict(name_count))
+'''
+'''
+from collections import defaultdict
+word_count = defaultdict(int)
+
+words = ["apple", "banana", "apple", "cherry", "banana", "apple"]
+for word in words:
+    word_count[word] += 1   # No KeyError — new keys default to 0
+
+print(dict(word_count))
+print(type(word_count))
+'''
+
+# Counter:-
+# counter is a subclass of dict that helps count hashable objects. It counts the number of occurrences of each element in an iterable and returns a dictionary-like object where keys are the elements and values are their counts.
+'''
+from collections import Counter
+words=["apple", "banana", "apple", "cherry", "banana", "apple"]
+counts=Counter(words)
+print(counts)
+'''
+#problem statement:-
+students = {
+    "Tony"  : 92,
+    "Raj"   : 45,
+    "Priya" : 78,
+    "John"  : 38,
+    "Sara"  : 85,
+    "Ali"   : 61,
+    "Neha"  : 29
+}
+print(students["Tony"])
+print(students.get("Rohan","student not found"))
+students["tony"] =97
+print(students["tony"])
+students.update({"Meera":74})
+print(students)
+for student,marks in students.items():
+     if marks>+50:
+         status="pass"
+         print(f"{student} ->{status}")
+     else:
+         status="fail"
+         print(f"{student} ->{status}")
+from collections import Counter
+toppers=Counter({student for student, marks in students.items() if marks >= 80})
+print(toppers)
+
+
 
 
